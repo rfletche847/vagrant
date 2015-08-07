@@ -1,12 +1,14 @@
 #!/bin/bash
 #
 
+# Install MySQL
+yum install -y mysql mysql-server mysql-devel
+
+# Configure MySQL Service to start at boot
+chkconfig --add mysqld
+chkconfig mysqld on
+
 #start MySQL
 service mysqld start
 
 mysql -u root -e "SHOW DATABASES";
-
-#Download starter content
-cd /vagrant
-sudo -u vagrant wget -q https://raw.githubusercontent.com/rfletche847/vagrant/master/files/index.html
-sudo -u vagrant wget -q https://raw.githubusercontent.com/rfletche847/vagrant/master/files/info.php
